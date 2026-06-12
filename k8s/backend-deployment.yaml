@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-model
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-model
+  template:
+    metadata:
+      labels:
+        app: backend-model
+    spec:
+      containers:
+        - name: backend-model
+          image: europe-west4-docker.pkg.dev/project-99e7c839-6913-4a58-8b0/model-repo/backend-model:latest
+          ports:
+            - containerPort: 8000

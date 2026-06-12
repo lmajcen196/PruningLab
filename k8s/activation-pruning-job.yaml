@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: activation-pruning-mistral
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: activation-pruning
+          image: europe-west4-docker.pkg.dev/project-99e7c839-6913-4a58-8b0/model-backend/backend:activation-pruning
+          imagePullPolicy: Always
+          command: ["python3"]
+          args:
+            - "pruning/run_activation_pruning.py"
+            - "--model"
+            - "mistral-7b-instruct"
+            - "--dataset"
+            - "pruning/data/processed/calibration.jsonl"
+          resources:
+            limits:
+              nvidia.com/gpu: 1
