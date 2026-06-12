@@ -559,4 +559,4 @@ Faculty of Electrical Engineering and Computing (FER)
 
 Bachelor Thesis Project
 
-**Pruning-Based Defense Against Jailbreak Attacks on Large Language Models**
+**Pruning Large Language Models Against Jailbreak Attacks**
